@@ -44,7 +44,10 @@ export class HomeComponent {
   }
 
   constructor(){
-    this.housingLocationList = this.housingService.getAllHousingLocations();
-    this.filterResults('');
+    this.housingService.getAllHousingLocations().then((housingLocationList: HousingLocation[])=> {
+      this.housingLocationList = housingLocationList;
+      this.filteredLocationList = housingLocationList;
+    });
+    //this.filterResults('');
   }
 }
